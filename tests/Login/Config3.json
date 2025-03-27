@@ -1,0 +1,50 @@
+{
+    "saucedemo": {
+      "url": "https://www.saucedemo.com/",
+      "validCredentials": {
+        "username": "standard_user",
+        "password": "secret_sauce"
+      },
+      "invalidCredentials": {
+        "wrongUsername": {
+          "username": "invalid_user",
+          "password": "secret_sauce"
+        },
+        "wrongPassword": {
+          "username": "standard_user",
+          "password": "wrong_password"
+        },
+        "emptyFields": {
+          "username": "",
+          "password": ""
+        },
+        "lockedOutUser": {
+          "username": "locked_out_user",
+          "password": "secret_sauce"
+        }
+      },
+      "invalidCheckoutDetails": {
+        "emptyFirstName": {
+          "firstName": "",
+          "lastName": "Doe",
+          "postalCode": "12345"
+        },
+        "emptyLastName": {
+          "firstName": "John",
+          "lastName": "",
+          "postalCode": "12345"
+        },
+        "emptyPostalCode": {
+          "firstName": "John",
+          "lastName": "Doe",
+          "postalCode": ""
+        }
+      },
+      "timeouts": {
+        "navigation": 2000,
+        "login": 5000,
+        "checkout": 5000
+      }
+    }
+  }
+  

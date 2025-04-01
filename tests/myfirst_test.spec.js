@@ -24,6 +24,8 @@ test('Login Test with OTP', async ({ page }) => {
     // Enter OTP
     await page.getByRole('textbox', { name: 'authentication code' }).fill(otp);
     await page.getByRole('button', { name: 'Sign in' }).click();
+   
+
     
    
 

@@ -6,6 +6,7 @@ test('Selectors for Login', async ({ page }) => {
    await expect(page).toHaveTitle('Swag Labs');
    console.log('✅ Title is correct');
 
+
    // Login
    await page.locator('#user-name').fill(Config2.username);
    await page.locator('#password').fill(Config2.password);

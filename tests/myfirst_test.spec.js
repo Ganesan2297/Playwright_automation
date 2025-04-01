@@ -17,7 +17,7 @@ test('Login Test with OTP', async ({ page }) => {
     
 
     // Generate OTP
-    authenticator.options = { step: 30, window: 1 }; // Adjust OTP validity window
+   authenticator.options = { step: 30, window: 1 }; // Adjust OTP validity window
     const otp = authenticator.generate(config.totpSecret);
     console.log(`Generated OTP: ${otp}`);
 
@@ -26,4 +26,7 @@ test('Login Test with OTP', async ({ page }) => {
     await page.getByRole('button', { name: 'Sign in' }).click(); 
 
     console.log('✅ Login successful with OTP!');
+
+
 });
+

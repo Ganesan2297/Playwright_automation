@@ -10,6 +10,7 @@ test('Login Test with Happy Path', async ({ page }) => {
     // Click Sign In
     await expect(page.getByRole('button', { name: 'Sign in' })).toBeEnabled();
     await page.waitForTimeout(2000);
+    await page.getByRole('button', { name: 'Sign In' }).hover();
     await page.getByRole('button', { name: 'Sign In' }).click();
 
 

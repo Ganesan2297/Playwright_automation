@@ -1,0 +1,18 @@
+{
+    "baseUrl": "https://mohamed-greenlight-app.greenlight-grocery.link",
+    "invalidCredentials": {
+      "wrongUsername": {
+        "username": "rsganesan@numentica-ui.com",
+        "password": "Gann@2297"
+      },
+      "wrongPassword": {
+        "username": "ganesan.rs@numentica-ui.com",
+        "password": "wrongpass123"
+      },
+      "emptyCredentials": {
+        "username": "",
+        "password": ""
+      }
+    }
+  }
+  

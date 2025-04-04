@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 //const { authenticator } = require('otplib');
 const config = require('./Login/Config.json'); // Import JSON configuration
-test.describe.configure({ retries: 1 });
+//test.describe.configure({ retries: 1 });
 
 test('Login Test with Happy Path', async ({ page }) => {
     await page.goto(config.baseUrl);
@@ -37,9 +37,8 @@ test('Login Test with Happy Path', async ({ page }) => {
 
     //Navigating to create a new Order
     await expect(page.getByRole('link', { name: 'New Order' })).toBeVisible();
-    await page.waitForTimeout(1000);
     await page.getByRole('link', { name: 'New Order' }).click();
-    await page.waitForTimeout(1000);
+    
     
     //Selecting one of the Dsiplayed Restaurant
     await page.getByText('Americano, Lincoln ParkChicago, IL').click();
@@ -71,7 +70,7 @@ test('Login Test with Happy Path', async ({ page }) => {
 
     
     const sendEmailButton = page.getByRole('button', { name: 'Send Email Total: $' });
-    await sendEmailButton.scrollIntoViewIfNeeded();
+    //await sendEmailButton.scrollIntoViewIfNeeded();
     await sendEmailButton.click();
     
    

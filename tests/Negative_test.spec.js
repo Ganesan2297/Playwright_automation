@@ -1,11 +1,12 @@
 const {test, expect} = require ('@playwright/test')
 import { text } from 'stream/consumers';
 import Config4 from './Login/Config4.json';
+test.describe.configure({ retries: 1 });
 
 
 test.describe('❌ Negative Login Test Cases - GreenLight Grocery', () => {
 
-         test('Invalid Username', async ({ page }) => {
+      test('Invalid Username', async ({ page }) => {
       await page.goto(Config4.baseUrl);
       await page.getByRole('button', { name: 'Sign In' }).click();
       await page.getByRole('textbox', { name: 'name@host.com' }).fill(Config4.invalidCredentials.wrongUsername.username);

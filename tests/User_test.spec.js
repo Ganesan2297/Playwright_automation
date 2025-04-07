@@ -9,6 +9,7 @@ test('User Permission', async ({ page }) => {
     // Click Sign In
     await expect(page.getByRole('button', { name: 'Sign in' })).toBeEnabled();
     await page.waitForTimeout(2000);
+    await page.getByRole('button', { name: 'Sign In' }).hover();
     await page.getByRole('button', { name: 'Sign In' }).click();
 
 
@@ -22,6 +23,7 @@ test('User Permission', async ({ page }) => {
     await page.waitForTimeout(3000);
 
     await expect(page.getByRole('button', { name: 'submit' })).toBeVisible();
+    await page.getByRole('button', { name: 'submit' }).hover();
     await page.getByRole('button', { name: 'submit' }).click();
 
 
@@ -34,14 +36,20 @@ test('User Permission', async ({ page }) => {
     await page.waitForTimeout(5000);
 
     //  User permission Update
-
+    await page.locator('header').getByRole ('button').hover();
     await page.locator('header').getByRole('button').click()
 
+    await page.getByRole('link', { name: 'Users' }).hover();
+    await page.waitForTimeout(1000);
+    
+    //Click on User option
     await page.getByRole('link', { name: 'Users' }).click();
     await expect(page.getByRole('heading', { name: 'Users' })).toBeVisible();
 
 
     await page.getByRole('row', { name: 'Mohamed Safvan mohamed.safvan' }).getByRole('cell').nth(2).click();
     await page.waitForTimeout(1000);
+    await expect(page.getByRole('option', { name: 'Owner' })).toBeVisible();
     await page.getByRole('option', { name: 'Owner' }).click();
+
 });

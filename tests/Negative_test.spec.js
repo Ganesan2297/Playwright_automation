@@ -8,10 +8,17 @@ test.describe('❌ Negative Login Test Cases - GreenLight Grocery', () => {
 
       test('Invalid Username', async ({ page }) => {
       await page.goto(Config4.baseUrl);
+      await expect(page).toHaveTitle('GreenLight Grocery');
+    
+      //Sign In
+      await page.getByRole('button', { name: 'Sign In' }).hover(); 
       await page.getByRole('button', { name: 'Sign In' }).click();
+
+      //Login - Invalid Username and Password.
       await page.getByRole('textbox', { name: 'name@host.com' }).fill(Config4.invalidCredentials.wrongUsername.username);
       await page.waitForTimeout(3000);
       await page.getByRole('textbox', { name: 'Password' }).fill(Config4.invalidCredentials.wrongUsername.password);
+      await page.getByRole('button', { name: 'submit' }).hover();
       await page.getByRole('button', { name: 'submit' }).click();
       await page.waitForTimeout(3000);
       
@@ -19,12 +26,15 @@ test.describe('❌ Negative Login Test Cases - GreenLight Grocery', () => {
       console.log('❌ Login failed with invalid username');
     });
   
+    //Login - Invalid Password and Username
       test('Invalid Password', async ({ page }) => {
       await page.goto(Config4.baseUrl);
+      await page.getByRole('button', { name: 'Sign In' }).hover();
       await page.getByRole('button', { name: 'Sign In' }).click();
       await page.getByRole('textbox', { name: 'name@host.com' }).fill(Config4.invalidCredentials.wrongPassword.username);
       page.waitForTimeout(2000);
       await page.getByRole('textbox', { name: 'Password' }).fill(Config4.invalidCredentials.wrongPassword.password);
+      await page.getByRole('button', { name: 'submit' }).hover();
       await page.getByRole('button', { name: 'submit' }).click();
       await page.waitForTimeout(3000);
   
@@ -32,9 +42,14 @@ test.describe('❌ Negative Login Test Cases - GreenLight Grocery', () => {
       console.log('❌ Login failed with invalid password');
     }); 
   
+    //Login - Empty Username and login
       test('Empty Credentials', async ({ page }) => {
       await page.goto(Config4.baseUrl);
+      await page.waitForTimeout(2000);
+      await page.getByRole('button', { name: 'Sign In' }).hover();
       await page.getByRole('button', { name: 'Sign In' }).click();
+      await page.waitForTimeout(2000)
+      await page.getByRole('button', { name: 'submit' }).hover();
       await page.getByRole('button', { name: 'submit' }).click();
       await page.waitForTimeout(2000);
       

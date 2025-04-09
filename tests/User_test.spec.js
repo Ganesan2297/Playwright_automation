@@ -41,15 +41,18 @@ test('User Permission', async ({ page }) => {
 
     await page.getByRole('link', { name: 'Users' }).hover();
     await page.waitForTimeout(1000);
-    
+
     //Click on User option
     await page.getByRole('link', { name: 'Users' }).click();
     await expect(page.getByRole('heading', { name: 'Users' })).toBeVisible();
 
-
+   //Changing User Permission
+    await page.getByRole('row', { name: 'Mohamed Safvan mohamed.safvan' }).getByRole('cell').nth(2).waitFor({ state: 'visible' });
     await page.getByRole('row', { name: 'Mohamed Safvan mohamed.safvan' }).getByRole('cell').nth(2).click();
     await page.waitForTimeout(1000);
     await expect(page.getByRole('option', { name: 'Owner' })).toBeVisible();
+    await page.getByRole('option', { name: 'Owner' }).hover();
     await page.getByRole('option', { name: 'Owner' }).click();
+    await page.waitForTimeout(2000);
 
 });

@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 //const { authenticator } = require('otplib');
 const config = require('./Login/Config.json'); // Import JSON configuration
-test.describe.configure({ retries: 1 });
+//test.describe.configure({ retries: 2 });
 
 test('Login Test with Happy Path', async ({ page }) => {
     await page.goto(config.baseUrl);
@@ -29,7 +29,7 @@ test('Login Test with Happy Path', async ({ page }) => {
 
     const otpInput = page.getByRole('textbox', { name: 'authentication code' });
     await expect(otpInput).toBeVisible({ timeout: 10000 });
-    console.log("🔹 Enter the OTP manually in the browser. Playwright will continue automatically."); // Wait up to 10s for the field to appear
+    console.log("✅ Enter the OTP manually in the browser. Playwright will continue automatically."); // Wait up to 10s for the field to appear
     await page.getByRole('button', { name: 'Sign in' }).click();
     console.log('✅ Login successful with OTP!');
 
@@ -83,13 +83,13 @@ test('Login Test with Happy Path', async ({ page }) => {
     //Email page and send Email
     await expect(page.getByRole('button', { name: 'Send Email Total: $' })).toBeEnabled();
     await page.getByRole('button', { name: 'Send Email Total: $' }).click();
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(2000);
     await expect(page.getByRole('button', { name: 'Send Email' })).toBeVisible();
     await page.getByRole('button', { name: 'Send Email' }).hover();
     await page.getByRole('button', { name: 'Send Email' }).click();
-    await page.waitForTimeout(1000);
-    console.log("Email Sent Successfully");
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(2000);
+    console.log("✅ Email Sent Successfully");
+    await page.waitForTimeout(2000);
     
 
 // Assert that the "Return Ordering" button is visible and enabled, then click it

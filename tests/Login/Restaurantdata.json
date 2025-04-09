@@ -1,0 +1,36 @@
+
+{
+    "theJollyScholar": {
+      "restaurantName": "The Jolly Scholar",
+      "phone": "+1 216-368-0092",
+      "streetAddress": "11111 Euclid Ave",
+      "city": "Cleveland",
+      "state": "Ohio",
+      "postalCode": "44106"
+    },
+    "americano": {
+      "restaurantName": "Americano, Lincoln Park",
+      "phone": "+1 312-285-2222",
+      "streetAddress": "1816 N Clark St",
+      "city": "Chicago",
+      "state": "Illinois",
+      "postalCode": "60614"
+    },
+    "tacoDaddys": {
+      "restaurantName": "Taco Daddy's",
+      "phone": "+1 925-387-0350",
+      "streetAddress": "621 Las Juntas St",
+      "city": "Martinez",
+      "state": "California",
+      "postalCode": "94553"
+    },
+    "theTacoStop": {
+      "restaurantName": "The Taco Stop",
+      "phone": "+1 970-281-2313",
+      "streetAddress": "2601 S Lemay Ave UNIT 30",
+      "city": "Fort Collins",
+      "state": "Colorado",
+      "postalCode": "80525"
+    }
+  }
+  

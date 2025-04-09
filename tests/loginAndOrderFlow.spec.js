@@ -4,7 +4,7 @@ const { createAndCheckoutOrder } = require('./helpers/orderHelper');
 
 test.describe('Login and Order Flow - Full Flow', () => {
 
-  test.beforeEach(async ({ page }) => {
+    test.beforeEach(async ({ page }) => {
     await login(page); // login step
   });
 

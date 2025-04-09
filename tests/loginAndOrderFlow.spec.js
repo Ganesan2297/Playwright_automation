@@ -1,6 +1,7 @@
 const { test } = require('@playwright/test');
 const { login } = require('./helpers/loginHelper');
 const { createAndCheckoutOrder } = require('./helpers/orderHelper');
+//test.describe.configure({ retries: 2 });
 
 test.describe('Login and Order Flow - Full Flow', () => {
 

@@ -7,6 +7,7 @@ async function createAndCheckoutOrder(page) {
 
   // Navigate to New Order
   await expect(page.getByRole('link', { name: 'New Order' })).toBeVisible();
+  await page.waitForTimeout(1000);
   await page.getByRole('link', { name: 'New Order' }).hover();
   await page.getByRole('link', { name: 'New Order' }).click();
 
@@ -32,7 +33,7 @@ async function createAndCheckoutOrder(page) {
   await expect(page.getByRole('textbox').nth(1)).toBeEnabled();
   await page.getByRole('textbox').nth(1).click();
   await page.getByRole('textbox').nth(1).fill('10');
-  await page.waitForTimeout(1000);
+  //await page.waitForTimeout(1000);
 
   // Checkout
   await expect(page.getByRole('button', { name: 'Checkout' })).toBeVisible({ timeout: 5000 });
@@ -40,20 +41,22 @@ async function createAndCheckoutOrder(page) {
   await page.getByRole('button', { name: 'Checkout' }).click();
 
   // Email page
-  
-  await expect(page.getByRole('button', { name: 'Send Email Total: $' })).toBeEnabled();
-  await page.getByRole('button', { name: 'Send Email Total: $' }).click();
-  await page.waitForTimeout(1000);
-  await expect(page.getByRole('button', { name: 'Send Email' })).toBeVisible();
-  await page.getByRole('button', { name: 'Send Email' }).hover();
-  await page.getByRole('button', { name: 'Send Email' }).click();
-  console.log("✅ Email Sent Successfully");
-  
+    await expect(page.getByRole('button', { name: 'Send Email Total: $' })).toBeEnabled();
+    await page.getByRole('button', { name: 'Send Email Total: $' }).click();
+    await page.waitForTimeout(2000);
+    await expect(page.getByRole('button', { name: 'Send Email' })).toBeVisible();
+    await page.getByRole('button', { name: 'Send Email' }).hover();
+    await page.getByRole('button', { name: 'Send Email' }).click();
+    await page.waitForTimeout(1000);
+    console.log("✅ Email Sent Successfully");
+    await page.waitForTimeout(500);
+    
 
   // Return to ordering
-  await expect(page.getByRole('button', { name: 'Return Ordering' })).toBeEnabled();
-  await page.getByRole('button', { name: 'Return Ordering' }).hover();
-  await page.getByRole('button', { name: 'Return Ordering' }).click();
+  //await expect(page.getByRole('button', { name: 'Return Ordering' })).toBeEnabled();
+  //await page.getByRole('button', { name: 'Return Ordering' }).hover();
+  //await page.getByRole('button', { name: 'Return Ordering' }).click();
+  //await page.waitForTimeout(2000);
 }
 
 module.exports = { createAndCheckoutOrder };

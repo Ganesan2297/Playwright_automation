@@ -45,7 +45,6 @@ test.describe('❌ Negative Login Test Cases - GreenLight Grocery', () => {
     //Login - Empty Username and login
       test('Empty Credentials', async ({ page }) => {
       await page.goto(Config4.baseUrl);
-      await page.waitForTimeout(2000);
       await page.getByRole('button', { name: 'Sign In' }).hover();
       await page.getByRole('button', { name: 'Sign In' }).click();
       await page.waitForTimeout(2000)

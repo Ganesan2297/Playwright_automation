@@ -26,7 +26,7 @@ const config = require('../Login/Config.json');
   console.log("✅ Enter the OTP manually in the browser. Playwright will continue automatically.");
   await page.getByRole('button', { name: 'Sign in' }).click();
 
-  await page.waitForTimeout(10000);
+  await page.waitForTimeout(5000);
 }
 
 module.exports = { login };

@@ -1,58 +1,29 @@
+// tests/user_test.spec.js
 const { test, expect } = require('@playwright/test');
-import Config  from './Login/Config.json';
+const { login } = require('./helpers/loginHelper');
 
-
-test('User Permission', async ({ page }) => {
-    await page.goto(Config.baseUrl);
-    await expect(page).toHaveTitle('GreenLight Grocery');
-
-    // Click Sign In
-    await expect(page.getByRole('button', { name: 'Sign in' })).toBeEnabled();
+test.describe('User Permission Flow', () => {
+  test.beforeEach(async ({ page }) => {
+    await login(page); // ✅ Login in beforeEach
     await page.waitForTimeout(2000);
-    await page.getByRole('button', { name: 'Sign In' }).hover();
-    await page.getByRole('button', { name: 'Sign In' }).click();
+  });
 
-
-    // Enter Login Details
-    await expect(page.getByRole('textbox', { name: 'name@host.com' })).toBeVisible();
-    await page.getByRole('textbox', { name: 'name@host.com' }).fill(Config.username);
-
-
-    await expect(page.getByRole('textbox', { name: 'Password' })).toBeVisible()
-    await page.getByRole('textbox', { name: 'Password' }).fill(Config.password);
-    await page.waitForTimeout(3000);
-
-    await expect(page.getByRole('button', { name: 'submit' })).toBeVisible();
-    await page.getByRole('button', { name: 'submit' }).hover();
-    await page.getByRole('button', { name: 'submit' }).click();
-
-
-    const otpInput = page.getByRole('textbox', { name: 'authentication code' });
-    await expect(otpInput).toBeVisible({ timeout: 10000 });
-    console.log("🔹 Enter the OTP manually in the browser. Playwright will continue automatically."); // Wait up to 10s for the field to appear
-    await page.getByRole('button', { name: 'Sign in' }).click();
-    console.log('✅ Login successful with OTP!');
-
-    await page.waitForTimeout(5000);
-
-    //  User permission Update
-    await page.locator('header').getByRole ('button').hover();
-    await page.locator('header').getByRole('button').click()
+  test('Should update user permission', async ({ page }) => {
+    await page.locator('header').getByRole('button').hover();
+    await page.locator('header').getByRole('button').click();
 
     await page.getByRole('link', { name: 'Users' }).hover();
     await page.waitForTimeout(1000);
-
-    //Click on User option
     await page.getByRole('link', { name: 'Users' }).click();
     await expect(page.getByRole('heading', { name: 'Users' })).toBeVisible();
 
-   //Changing User Permission
     await page.getByRole('row', { name: 'Mohamed Safvan mohamed.safvan' }).getByRole('cell').nth(2).waitFor({ state: 'visible' });
     await page.getByRole('row', { name: 'Mohamed Safvan mohamed.safvan' }).getByRole('cell').nth(2).click();
-    await page.waitForTimeout(1000);
+    //await page.waitForTimeout(1000);
+
     await expect(page.getByRole('option', { name: 'Owner' })).toBeVisible();
     await page.getByRole('option', { name: 'Owner' }).hover();
     await page.getByRole('option', { name: 'Owner' }).click();
-    await page.waitForTimeout(2000);
-
+    //await page.waitForTimeout(1000);
+  });
 });

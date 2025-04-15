@@ -1,8 +1,9 @@
 const { expect } = require('@playwright/test');
-const config = require('../Login/Config.json');
+//const { Config } = require('../Login/Config.json');
+import Config from '../Login/Config.json';
 
   async function login(page) {
-  await page.goto(config.baseUrl);
+  await page.goto(Config.baseUrl);
   await expect(page).toHaveTitle('GreenLight Grocery');
 
   // Click Sign In
@@ -13,9 +14,9 @@ const config = require('../Login/Config.json');
 
   // Enter Login Details
   await expect(page.getByRole('textbox', { name: 'name@host.com' })).toBeVisible();
-  await page.getByRole('textbox', { name: 'name@host.com' }).fill(config.username);
+  await page.getByRole('textbox', { name: 'name@host.com' }).fill(Config.username);
   await expect(page.getByRole('textbox', { name: 'Password' })).toBeVisible();
-  await page.getByRole('textbox', { name: 'Password' }).fill(config.password);
+  await page.getByRole('textbox', { name: 'Password' }).fill(Config.password);
 
   await page.waitForTimeout(3000);
   await expect(page.getByRole('button', { name: 'submit' })).toBeVisible();

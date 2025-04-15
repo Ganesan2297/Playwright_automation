@@ -1,11 +1,10 @@
 {
     "username": "ganesan.rs@numentica-ui.com",
     "password": "Gann@2297",
-    "baseUrl": "https://mohamed-greenlight-app.greenlight-grocery.link",
+    "baseUrl": "https://mohamed3-app.greenlight-grocery.link/",
     "totpSecret": "d18be550-a0e1-7052-b86e-6cc58d670196",
     "timeouts": {
       "navigation": 10000,
       "otpEntry": 3000
     }
   }
-  

@@ -16,9 +16,9 @@ test.describe('Past Order', () => {
     await page.getByRole('link', { name: 'Past Orders' }).click();
     await page.waitForTimeout(1000);
 
-    await page.getByRole('row', { name: '01JQR2ZWTQFWZ1P0TPFC30M6WH' }).getByRole('button').hover(); 
-    await page.getByRole('row', { name: '01JQR2ZWTQFWZ1P0TPFC30M6WH' }).getByRole('button').click(); 
-    await page.waitForTimeout(5000);
+    await page.getByRole('row', { name: '01JSKSRR7HKVBFMGYGEH53FJDT' }).getByRole('button').hover(); 
+    await page.getByRole('row', { name: '01JSKSRR7HKVBFMGYGEH53FJDT' }).getByRole('button').click(); 
+    await page.waitForTimeout(2000);
     //await page.waitForTimeout(3000);
  
 }); 

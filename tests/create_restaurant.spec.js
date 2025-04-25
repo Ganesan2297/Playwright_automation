@@ -10,14 +10,15 @@ test.describe('Create Restaurant Flow', () => {
     await login(page); // 🔐 Login before each test
   });
 
-  test('Should create The Jolly Scholar restaurant successfully', async ({ page }) => {
+  test('Should create the restaurant successfully', async ({ page }) => {
     
-   const data = Restaurantdata.theJollyScholar
+   const data = Restaurantdata.theTacoStop
 
     await page.locator('header').getByRole('button').hover();
     await page.locator('header').getByRole('button').click();
 
     await expect(page.getByRole('link', { name: 'Restaurants' })).toBeVisible({ timeout: 10000 });
+    await page.getByRole('link', { name: 'Restaurants' }).hover();
     await page.getByRole('link', { name: 'Restaurants' }).click();
     await page.getByRole('button', { name: 'Create Restaurant' }).click();
 

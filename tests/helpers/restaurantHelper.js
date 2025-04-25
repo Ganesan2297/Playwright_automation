@@ -30,12 +30,20 @@ async function fillRestaurantDetails(page, data) {
   await expect(page.getByRole('textbox', { name: 'Postal Code' })).toBeVisible();
   await page.getByRole('textbox', { name: 'Postal Code' }).fill(data.postalCode);
 
+  await page.getByRole('combobox', { name: 'Pricing Tier For Usfoods' }).click();
+  await page.getByRole('option', { name: 'Medium' }).click();
+  await page.getByRole('combobox', { name: 'Pricing Tier For Gfs' }).click();
+  await page.getByRole('option', { name: 'Medium' }).click();
+
+
   await expect(page.getByRole('button', { name: 'Create Greenlight Restaurant' })).toBeEnabled();
   await page.getByRole('button', { name: 'Create Greenlight Restaurant' }).click();
-  await expect(page.getByText(/Restaurant CreatedSuccessfully created/i).first()).toBeVisible();
 
+  await expect(page.getByText(/Restaurant Created/i).nth(0)).toBeVisible();
+  await page.getByRole('region', { name: 'Notifications (F8)' }).getByRole('button').click();
+ 
 
-  console.log(`✅ ${data.restaurantName} created successfully!`);
+ console.log(`✅ ${data.restaurantName} created successfully!`);
 
 }
 

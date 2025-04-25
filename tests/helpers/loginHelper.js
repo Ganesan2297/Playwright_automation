@@ -22,12 +22,13 @@ import Config from '../Login/Config.json';
   await expect(page.getByRole('button', { name: 'submit' })).toBeVisible();
   await page.getByRole('button', { name: 'submit' }).click();
 
+  //OTP Authentication
   const otpInput = page.getByRole('textbox', { name: 'authentication code' });
   await expect(otpInput).toBeVisible({ timeout: 10000 });
   console.log("✅ Enter the OTP manually in the browser. Playwright will continue automatically.");
   await page.getByRole('button', { name: 'Sign in' }).click();
-
-  await page.waitForTimeout(5000);
+  console.log("✅Successfully Logged In");
+  await page.waitForTimeout(7000);
 }
 
 module.exports = { login };

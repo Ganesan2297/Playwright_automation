@@ -1,38 +1,34 @@
 const { expect } = require('@playwright/test');
+const  Managers = require('../Login/Managers.json'); // adjust path if needed
 
-async function addAndDeleteManager(page) {
+async function addManager(page) {
+  await expect(page.locator('header').getByRole('button')).toBeVisible();
   await page.locator('header').getByRole('button').hover();
   await page.locator('header').getByRole('button').click();
 
   await expect(page.getByRole('link', { name: 'Restaurants' })).toBeVisible();
-  await page.getByRole('link', { name: 'Restaurants' }).hover();    
   await page.getByRole('link', { name: 'Restaurants' }).click();
 
-  await expect(page.getByRole('row', { name: 'Loading... 📞 +1 (312) 285-' }).getByRole('button').first()).toBeVisible();
-  await page.getByRole('row', { name: 'Loading... 📞 +1 (312) 285-' }).getByRole('button').first().hover();
-  await page.getByRole('row', { name: 'Loading... 📞 +1 (312) 285-' }).getByRole('button').first().click();
+  //selecting a restaurant to add the Manager
+  await page.locator('tr:nth-child(2) > td:nth-child(2) > .min-w-\\[300px\\] > .space-y-4 > div:nth-child(2) > .space-y-2 > .inline-flex').scrollIntoViewIfNeeded();
 
-  const Email = managers.ganesh;
+  await expect(page.locator('tr:nth-child(2) > td:nth-child(2) > .min-w-\\[300px\\] > .space-y-4 > div:nth-child(2) > .space-y-2 > .inline-flex')).toBeVisible();
+  await page.locator('tr:nth-child(2) > td:nth-child(2) > .min-w-\\[300px\\] > .space-y-4 > div:nth-child(2) > .space-y-2 > .inline-flex').click();
 
+  const email = Managers.ganesh // change key for dynamic user
+  
+  //Entering Manager email id and adding
   await expect(page.getByRole('textbox', { name: "Enter manager's email" })).toBeVisible();
-  await page.getByRole('textbox', { name: "Enter manager's email" }).hover();
-  await page.getByRole('textbox', { name: "Enter manager's email" }).click();
-  await page.getByRole('textbox', { name: "Enter manager's email" }).fill(Email);
-
+  await page.getByRole('textbox', { name: "Enter manager's email" }).fill(email);
+  await page.waitForTimeout(1000);
   await expect(page.getByRole('button', { name: 'Add Manager' })).toBeEnabled();
-  await page.getByRole('button', { name: 'Add Manager' }).hover();
   await page.getByRole('button', { name: 'Add Manager' }).click();
 
-  await page.getByRole('table').getByRole('button').filter({ hasText: /^$/ }).click();
+  await expect(page.locator('text=/Manager added successfully/i').first()).toBeVisible({ timeout: 3000 });
+  //(await page.getByRole('button', { name: 'Close' }).isVisible()) && await page.getByRole('button', { name: 'Close' }).click();
 
-  await expect(page.getByRole('button', { name: 'Remove' })).toBeVisible();
-  await page.getByRole('button', { name: 'Remove' }).hover();
-  await page.getByRole('button', { name: 'Remove' }).click();
-
-  await expect(page.getByRole('region', { name: 'Notifications (F8)' }).getByRole('button')).toBeVisible();
-  await page.getByRole('region', { name: 'Notifications (F8)' }).getByRole('button').click();
-
-  console.log(`✅ Manager ${Email} added and removed successfully!`);
+  console.log(`✅ Manager ${email} added successfully!`);
 }
 
-module.exports = { addAndDeleteManager };
+module.exports = { addManager };
+

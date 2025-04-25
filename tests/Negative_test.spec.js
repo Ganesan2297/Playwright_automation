@@ -4,7 +4,7 @@ import Config4 from './Login/Config4.json';
 test.describe.configure({ retries: 1 });
 
 
-test.describe('❌ Negative Login Test Cases - GreenLight Grocery', () => {
+test.describe(' Negative Login Test Cases - GreenLight Grocery', () => {
 
       test('Invalid Username', async ({ page }) => {
       await page.goto(Config4.baseUrl);
@@ -23,9 +23,9 @@ test.describe('❌ Negative Login Test Cases - GreenLight Grocery', () => {
       await page.waitForTimeout(3000);
       
       const error = page.locator('text=Invalid Username and Password')
-      console.log('❌ Login failed with invalid username');
+      console.log(' Login failed with invalid username');
     });
-  
+   
     //Login - Invalid Password and Username
       test('Invalid Password', async ({ page }) => {
       await page.goto(Config4.baseUrl);
@@ -39,7 +39,7 @@ test.describe('❌ Negative Login Test Cases - GreenLight Grocery', () => {
       await page.waitForTimeout(3000);
   
       //const error = page.locator('text=Invalid Username and Password')  
-      console.log('❌ Login failed with invalid password');
+      console.log(' Login failed with invalid password');
     }); 
   
     //Login - Empty Username and login
@@ -54,7 +54,7 @@ test.describe('❌ Negative Login Test Cases - GreenLight Grocery', () => {
       
   
       const error = page.locator('text=Please fill this field');
-      console.log('❌ Login failed with empty credentials');
+      console.log(' Login failed with empty credentials');
     }); 
   
   });

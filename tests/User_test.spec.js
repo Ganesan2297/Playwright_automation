@@ -11,19 +11,22 @@ test.describe('User Permission Flow', () => {
   test('Should update user permission', async ({ page }) => {
     await page.locator('header').getByRole('button').hover();
     await page.locator('header').getByRole('button').click();
-
+     
     await page.getByRole('link', { name: 'Users' }).hover();
-    await page.waitForTimeout(1000);
     await page.getByRole('link', { name: 'Users' }).click();
     await expect(page.getByRole('heading', { name: 'Users' })).toBeVisible();
+    await page.waitForTimeout(2000);
 
-    await page.getByRole('row', { name: 'Mohamed Safvan mohamed.safvan' }).getByRole('cell').nth(2).waitFor({ state: 'visible' });
-    await page.getByRole('row', { name: 'Mohamed Safvan mohamed.safvan' }).getByRole('cell').nth(2).click();
-    //await page.waitForTimeout(1000);
-
-    await expect(page.getByRole('option', { name: 'Owner' })).toBeVisible();
-    await page.getByRole('option', { name: 'Owner' }).hover();
+    await page.getByRole('row', { name: 'Mohamed Safvan mohamed.safvan' }).getByRole('combobox').click();
     await page.getByRole('option', { name: 'Owner' }).click();
-    //await page.waitForTimeout(1000);
+    
+    const statusMessage = page.getByRole('status').nth(1); 
+    await expect(statusMessage).toHaveText(/User group updated successfully/i);
+    await page.getByRole('region', { name: 'Notifications (F8)' }).getByRole('button').click();
+
+
+
   });
 });
+  
+    

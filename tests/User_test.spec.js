@@ -15,7 +15,7 @@ test.describe('User Permission Flow', () => {
     await page.getByRole('link', { name: 'Users' }).hover();
     await page.getByRole('link', { name: 'Users' }).click();
     await expect(page.getByRole('heading', { name: 'Users' })).toBeVisible();
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(1000);
 
     await page.getByRole('row', { name: 'Mohamed Safvan mohamed.safvan' }).getByRole('combobox').click();
     await page.getByRole('option', { name: 'Owner' }).click();
@@ -23,6 +23,11 @@ test.describe('User Permission Flow', () => {
     const statusMessage = page.getByRole('status').nth(1); 
     await expect(statusMessage).toHaveText(/User group updated successfully/i);
     await page.getByRole('region', { name: 'Notifications (F8)' }).getByRole('button').click();
+
+    //again bring back to Super admin
+    await page.getByRole('row', { name: 'Mohamed Safvan mohamed.safvan' }).getByRole('combobox').click();
+    await page.getByRole('option', { name: 'Super Admin' }).click();
+    await page.waitForTimeout(1000);
 
 
 

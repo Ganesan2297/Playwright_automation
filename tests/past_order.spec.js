@@ -18,7 +18,7 @@ test.describe('Past Order', () => {
 
     await page.getByRole('row', { name: '01JSKSRR7HKVBFMGYGEH53FJDT' }).getByRole('button').hover(); 
     await page.getByRole('row', { name: '01JSKSRR7HKVBFMGYGEH53FJDT' }).getByRole('button').click(); 
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(5000);
     //await page.waitForTimeout(3000);
  
 }); 

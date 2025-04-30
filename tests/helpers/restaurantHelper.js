@@ -25,16 +25,20 @@ async function fillRestaurantDetails(page, data) {
   await page.getByRole('combobox', { name: 'State' }).click();
   await expect(page.getByRole('option', { name: data.state })).toBeVisible();
   await page.getByRole('option', { name: data.state }).click();
-  await page.waitForTimeout(1000);
+  //await page.waitForTimeout(1000);
 
   await expect(page.getByRole('textbox', { name: 'Postal Code' })).toBeVisible();
   await page.getByRole('textbox', { name: 'Postal Code' }).fill(data.postalCode);
 
+  await expect(page.getByRole('combobox', { name: 'Pricing Tier For Usfoods' })).toBeEnabled();
   await page.getByRole('combobox', { name: 'Pricing Tier For Usfoods' }).click();
-  await page.getByRole('option', { name: 'Medium' }).click();
-  await page.getByRole('combobox', { name: 'Pricing Tier For Gfs' }).click();
+  await expect(page.getByRole('option', { name: 'Medium' })).toBeVisible();
   await page.getByRole('option', { name: 'Medium' }).click();
 
+  await expect(page.getByRole('combobox', { name: 'Pricing Tier For Gfs' })).toBeEnabled();
+  await page.getByRole('combobox', { name: 'Pricing Tier For Gfs' }).click();
+  await expect(page.getByRole('option', { name: 'Medium' })).toBeVisible();
+  await page.getByRole('option', { name: 'Medium' }).click();
 
   await expect(page.getByRole('button', { name: 'Create Greenlight Restaurant' })).toBeEnabled();
   await page.getByRole('button', { name: 'Create Greenlight Restaurant' }).click();

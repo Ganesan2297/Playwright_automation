@@ -21,6 +21,7 @@ await page.getByRole('cell', { name: 'Owner 👤 Ganesan Ganesan 📧 ganesan.rs
 await expect(page.getByRole('button', { name: 'Remove' })).toBeVisible();
 await page.getByRole('button', { name: 'Remove' }).click();
 await expect(page.locator('text=Manager removed successfully').first()).toBeVisible();
+await page.waitForTimeout(1000);
 
 
 

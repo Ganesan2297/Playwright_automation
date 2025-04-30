@@ -12,7 +12,7 @@ test.describe('Create Restaurant Flow', () => {
 
   test('Should create the restaurant successfully', async ({ page }) => {
     
-   const data = Restaurantdata.theTacoStop
+   const data = Restaurantdata.theJollyScholar
 
     await page.locator('header').getByRole('button').hover();
     await page.locator('header').getByRole('button').click();
